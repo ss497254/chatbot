@@ -11,9 +11,9 @@ export const Header: React.FC<HeaderProps> = () => {
   const { clearMessages } = useMessageStore();
 
   return (
-    <div className="p-2 md:p-4 border-b flex items-center space-x-2">
-      <img src="/logo.png" className="h-8 w-8" />
-      <h4 className="flex-grow px-2">Chatbot</h4>
+    <div className="p-2 border-b flex items-center space-x-1">
+      <img src="/logo.png" className="h-8 w-8 mx-2" />
+      <h4 className="flex-grow">Chatbot</h4>
       <IconButton onClick={clearMessages}>
         <SyncIcon size={18} />
       </IconButton>
