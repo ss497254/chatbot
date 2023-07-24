@@ -5,31 +5,43 @@ import { IconButton } from "./IconButton";
 
 interface props {
   submitting?: boolean;
-  onSubmit: (message: string) => void;
+  onSend: (message: string) => void;
 }
 
-export const MessageInputBar: React.FC<props> = ({ onSubmit, submitting }) => {
+export const MessageInputBar: React.FC<props> = ({ onSend, submitting }) => {
   const ref = useRef<HTMLSpanElement>(null);
 
-  // focus textarea on mount
+  const onSubmit = () => {
+    if (submitting) return;
+
+    onSend(ref.current?.innerText || "(empty)");
+
+    if (ref.current) {
+      ref.current.innerText = "";
+      ref.current.focus();
+    }
+  };
+
   useEffect(() => {
-    ref.current.focus();
+    // focus textarea on mount
+    ref.current?.focus();
+
+    const fn = (e: KeyboardEvent) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        onSubmit();
+      }
+    };
+
+    ref.current?.addEventListener("keydown", fn);
+    return () => ref.current?.removeEventListener("keydown", fn);
   }, []);
 
   return (
     <div className="flex items-end p-3 px-4 border-t">
-      <ExpandingTextArea name="message" ref={ref} />
+      <ExpandingTextArea ref={ref} />
       <IconButton
-        onClick={() => {
-          if (submitting) return;
-
-          onSubmit(ref.current?.innerText || "(empty)");
-
-          if (ref.current) {
-            ref.current.innerText = "";
-            ref.current.focus();
-          }
-        }}
+        onClick={onSubmit}
         className="!p-2 ml-3 hover:rounded-full duration-200 h-fit bg-zinc-100 hover:bg-blue-500 hover:text-white"
       >
         {submitting ? <Spinner /> : <SendIcon size={22} />}

@@ -1,15 +1,9 @@
 import React, { forwardRef } from "react";
 
-export interface TextAreaProps
-  extends React.ComponentPropsWithoutRef<"textarea"> {
-  textarea?: boolean;
-  minRows?: number;
-  error?: string;
-  transparent?: boolean;
-}
+export interface TextAreaProps extends React.ComponentPropsWithoutRef<"span"> {}
 
 export const ExpandingTextArea = forwardRef<HTMLSpanElement, TextAreaProps>(
-  ({ className, textarea, error, transparent, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     return (
       <span
         ref={ref as any}

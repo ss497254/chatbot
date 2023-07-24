@@ -3,18 +3,18 @@ import { IMessage } from "../types/IMessage";
 
 interface MessageStoreState {
   messages: IMessage[];
-  add: (x: Omit<IMessage, "timestamp">) => void;
-  clear: () => void;
+  addMessage: (x: Omit<IMessage, "timestamp">) => void;
+  clearMessages: () => void;
 }
 
 export const useMessageStore = create<MessageStoreState>()((set, get) => ({
   messages: [],
-  add: (t) =>
+  addMessage: (t) =>
     set(({ messages }) => {
       const newMessage = { ...t, timestamp: new Date().getTime() };
       return { messages: [...messages, newMessage] };
     }),
-  clear: () => {
+  clearMessages: () => {
     set({ messages: [] });
   },
 }));
