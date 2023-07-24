@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SendIcon, Spinner } from "src/ChatBot/icons";
 import { ExpandingTextArea } from "./ExpandingTextArea";
-import { IconButton } from "./IconButton";
-import { useMessageStore } from "../stores/useMessagesStore";
+import { IconButton } from "../IconButton";
+import { useMessageStore } from "../../stores/useMessagesStore";
 
 export const MessageInputBar = () => {
   const { addMessage } = useMessageStore();

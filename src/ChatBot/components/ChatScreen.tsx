@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "./Header";
-import { MessageInputBar } from "./MessageInputBar";
+import { MessageInputBar } from "./MessageInput";
 import { MessagesContainer } from "./Messages";
 import { MessageSuggestions } from "./MessageSuggestions";
 
