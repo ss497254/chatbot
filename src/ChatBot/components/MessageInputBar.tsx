@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { EditIcon, SyncIcon } from "src/ChatBot/icons";
+import { SendIcon, Spinner } from "src/ChatBot/icons";
 import { ExpandingTextArea } from "./ExpandingTextArea";
 import { IconButton } from "./IconButton";
 
@@ -25,9 +25,9 @@ export const MessageInputBar: React.FC<props> = ({ onSubmit, submitting }) => {
             ref.current.focus();
           }
         }}
-        className="!p-3 ml-3 hover:rounded-full h-fit bg-zinc-100"
+        className="!p-2 ml-3 hover:rounded-full h-fit bg-zinc-100"
       >
-        {submitting ? <SyncIcon /> : <EditIcon />}
+        {submitting ? <Spinner /> : <SendIcon size={22} />}
       </IconButton>
     </div>
   );
