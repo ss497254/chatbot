@@ -9,7 +9,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const { toggleOpen } = useChatOpenStore();
 
   return (
-    <div className="p-4 border-b flex items-center space-x-3">
+    <div className="p-2 md:p-4 border-b flex items-center space-x-3">
       <img src="/logo.png" className="h-8 w-8" />
       <h4 className="flex-grow">Chatbot</h4>
       <IconButton>
