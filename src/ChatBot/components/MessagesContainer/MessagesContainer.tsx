@@ -8,7 +8,7 @@ export const MessagesContainer: React.FC<MessagesContainerProps> = () => {
   const { messages } = useMessageStore();
 
   return (
-    <div className="flex-grow overflow-auto">
+    <div className="flex-grow overflow-auto p-2">
       {messages.map((x) => (
         <MessageBox
           key={x.timestamp}
