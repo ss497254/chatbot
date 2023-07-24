@@ -21,3 +21,35 @@
 .tick-r + .tick-l {
   margin-top: 15px;
 }
+
+.load {
+  display: flex;
+}
+
+.load .line-1 {
+  animation: loading 0.8s 0s linear infinite;
+}
+.load .line-2 {
+  animation: loading 0.8s 0.2s linear infinite;
+}
+.load .line-3 {
+  animation: loading 0.8s 0.4s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 3px);
+  }
+  0% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, -3px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

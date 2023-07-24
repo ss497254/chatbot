@@ -7,10 +7,9 @@ interface props extends IMessage {
 }
 
 const dirClassNames = {
-  left:
-    "mr-auto bg-indigo-500 text-indigo-500 [&>*]:text-white " + Style["tick-l"],
+  left: "mr-auto text-zinc-100 bg-zinc-100 [&>*]:text-black " + Style["tick-l"],
   right:
-    "ml-auto text-zinc-100 bg-zinc-100 [&>*]:text-black " + Style["tick-r"],
+    "ml-auto bg-indigo-500 text-indigo-500 [&>*]:text-white " + Style["tick-r"],
 };
 
 export const MessageBox: React.FC<props> = memo(
@@ -31,4 +30,31 @@ export const MessageBox: React.FC<props> = memo(
       </div>
     );
   }
+);
+
+export const LoadingMessage = () => (
+  <div
+    className={[
+      "py-4 px-6 m-3 rounded-md w-fit relative",
+      dirClassNames.left,
+    ].join(" ")}
+  >
+    <div className={Style.load}>
+      <div
+        className={
+          "bg-zinc-400 rounded-full h-2.5 w-2.5 m-0.5 " + Style["line-1"]
+        }
+      ></div>
+      <div
+        className={
+          "bg-zinc-400 rounded-full h-2.5 w-2.5 m-0.5 " + Style["line-2"]
+        }
+      ></div>
+      <div
+        className={
+          "bg-zinc-400 rounded-full h-2.5 w-2.5 m-0.5 " + Style["line-3"]
+        }
+      ></div>
+    </div>
+  </div>
 );

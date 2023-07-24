@@ -3,6 +3,7 @@ import { IMessage } from "../types/IMessage";
 
 interface MessageStoreState {
   messages: IMessage[];
+  isLoading: boolean;
   addMessage: (x: Omit<IMessage, "timestamp">) => void;
   clearMessages: () => void;
 }
@@ -15,6 +16,7 @@ const startMessage: IMessage = {
 
 export const useMessageStore = create<MessageStoreState>()((set, get) => ({
   messages: [startMessage],
+  isLoading: false,
   addMessage: (t) =>
     set(({ messages }) => {
       const newMessage = { ...t, timestamp: new Date().getTime() };
