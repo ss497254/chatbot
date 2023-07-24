@@ -7,8 +7,10 @@ interface props extends IMessage {
 }
 
 const dirClassNames = {
-  left: "mr-auto " + Style["tick-l"],
-  right: "ml-auto " + Style["tick-r"],
+  left:
+    "mr-auto bg-indigo-500 text-indigo-500 [&>*]:text-white " + Style["tick-l"],
+  right:
+    "ml-auto text-zinc-100 bg-zinc-100 [&>*]:text-black " + Style["tick-r"],
 };
 
 export const MessageBox: React.FC<props> = memo(
@@ -16,14 +18,14 @@ export const MessageBox: React.FC<props> = memo(
     return (
       <div
         className={[
-          "max-w-[80%] text-zinc-100 p-3 bg-zinc-100 whitespace-pre-wrap mx-3 my-1.5 relative rounded-md outline-none",
+          "max-w-[80%] p-3 whitespace-pre-wrap mx-3 my-1.5 relative rounded-md outline-none",
           dirClassNames[dir],
         ].join(" ")}
       >
-        <p className="overflow-x-hidden text-sm text-black hover:break-words text-ellipsis">
+        <p className="overflow-x-hidden text-sm hover:break-words text-ellipsis">
           {content}
         </p>
-        <div className="mt-2 -mb-2 -mr-1 text-xs text-right text-black">
+        <div className="mt-2 -mb-2 -mr-1 text-xs text-right">
           {new Date(timestamp).toTimeString().substring(0, 5)}
         </div>
       </div>
