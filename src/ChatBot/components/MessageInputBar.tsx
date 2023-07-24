@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { SendIcon, Spinner } from "src/ChatBot/icons";
 import { ExpandingTextArea } from "./ExpandingTextArea";
 import { IconButton } from "./IconButton";
@@ -10,6 +10,11 @@ interface props {
 
 export const MessageInputBar: React.FC<props> = ({ onSubmit, submitting }) => {
   const ref = useRef<HTMLSpanElement>(null);
+
+  // focus textarea on mount
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   return (
     <div className="flex items-end p-3 px-4 border-t">
@@ -25,7 +30,7 @@ export const MessageInputBar: React.FC<props> = ({ onSubmit, submitting }) => {
             ref.current.focus();
           }
         }}
-        className="!p-2 ml-3 hover:rounded-full h-fit bg-zinc-100"
+        className="!p-2 ml-3 hover:rounded-full duration-200 h-fit bg-zinc-100 hover:bg-blue-500 hover:text-white"
       >
         {submitting ? <Spinner /> : <SendIcon size={22} />}
       </IconButton>
