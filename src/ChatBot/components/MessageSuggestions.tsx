@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMessageStore } from "../stores/useMessagesStore";
 
 interface MessageSuggestionsProps extends React.PropsWithChildren {}
@@ -10,7 +10,14 @@ const messageSuggestions = [
 ];
 
 export const MessageSuggestions: React.FC<MessageSuggestionsProps> = () => {
-  const { addMessage } = useMessageStore();
+  const [hide, setHide] = useState(false);
+  const { addMessage, isLoading } = useMessageStore();
+
+  useEffect(() => {
+    if (isLoading) setHide(true);
+  }, [isLoading]);
+
+  if (hide) return null;
 
   return (
     <div className="flex flex-wrap gap-2 p-3">
