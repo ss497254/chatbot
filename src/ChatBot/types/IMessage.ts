@@ -1,5 +1,5 @@
 export interface IMessage {
   content: string;
-  author: string & ("User" | "Bot");
+  author: "User" | "Bot";
   timestamp: number;
 }

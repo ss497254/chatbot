@@ -7,20 +7,20 @@ interface MessageStoreState {
   clearMessages: () => void;
 }
 
+const startMessage: IMessage = {
+  content: "👋 Hi! I am Chatbot, ask me anything about Chatbase!",
+  author: "Bot",
+  timestamp: new Date().getTime(),
+};
+
 export const useMessageStore = create<MessageStoreState>()((set, get) => ({
-  messages: [
-    {
-      content: "👋 Hi! I am Chatbot, ask me anything about Chatbase!",
-      author: "Bot",
-      timestamp: new Date().getTime(),
-    },
-  ],
+  messages: [startMessage],
   addMessage: (t) =>
     set(({ messages }) => {
       const newMessage = { ...t, timestamp: new Date().getTime() };
       return { messages: [...messages, newMessage] };
     }),
   clearMessages: () => {
-    set({ messages: [] });
+    set({ messages: [startMessage] });
   },
 }));
