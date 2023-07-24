@@ -8,7 +8,13 @@ interface MessageStoreState {
 }
 
 export const useMessageStore = create<MessageStoreState>()((set, get) => ({
-  messages: [],
+  messages: [
+    {
+      content: "👋 Hi! I am Chatbot, ask me anything about Chatbase!",
+      author: "Bot",
+      timestamp: new Date().getTime(),
+    },
+  ],
   addMessage: (t) =>
     set(({ messages }) => {
       const newMessage = { ...t, timestamp: new Date().getTime() };

@@ -10,7 +10,6 @@ export const ChatScreen: React.FC<ChatScreenProps> = () => {
     <div className="bg-white rounded-lg flex flex-col overflow-hidden shadow-lg h-[65vh] w-80 md:w-96 lg:w-[456px] absolute bottom-16 right-0">
       <Header />
       <MessagesContainer />
-      <div className="flex-grow"></div>
       <MessageInputBar />
     </div>
   );

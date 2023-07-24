@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { useClientOnly } from "src/ChatBot/hooks/useClientOnly";
-import { useChatOpenStore } from "./stores/useChatOpenStore";
 import { ChatScreen } from "./components/ChatScreen";
+import { useChatOpenStore } from "./stores/useChatOpenStore";
 
 interface ChatBotProps extends React.PropsWithChildren {}
 
