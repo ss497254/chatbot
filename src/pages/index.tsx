@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatBot } from "src/components/ChatBot";
+import { ChatBot } from "src/ChatBot";
 
 interface HomePageProps extends React.PropsWithChildren {}
 
