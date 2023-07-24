@@ -1,20 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SendIcon, Spinner } from "src/ChatBot/icons";
 import { ExpandingTextArea } from "./ExpandingTextArea";
 import { IconButton } from "./IconButton";
+import { useMessageStore } from "../stores/useMessagesStore";
 
-interface props {
-  submitting?: boolean;
-  onSend: (message: string) => void;
-}
+export const MessageInputBar = () => {
+  const { addMessage } = useMessageStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-export const MessageInputBar: React.FC<props> = ({ onSend, submitting }) => {
   const ref = useRef<HTMLSpanElement>(null);
 
   const onSubmit = () => {
-    if (submitting) return;
+    if (isSubmitting) return;
 
-    onSend(ref.current?.innerText || "(empty)");
+    addMessage({
+      content: ref.current?.innerText || "(empty)",
+      author: "User",
+    });
 
     if (ref.current) {
       ref.current.innerText = "";
@@ -44,7 +46,7 @@ export const MessageInputBar: React.FC<props> = ({ onSend, submitting }) => {
         onClick={onSubmit}
         className="!p-2 ml-3 hover:rounded-full duration-200 h-fit bg-zinc-100 hover:bg-blue-500 hover:text-white"
       >
-        {submitting ? <Spinner /> : <SendIcon size={22} />}
+        {isSubmitting ? <Spinner /> : <SendIcon size={22} />}
       </IconButton>
     </div>
   );
