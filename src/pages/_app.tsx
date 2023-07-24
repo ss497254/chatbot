@@ -10,7 +10,7 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Chatbot</title>
         <link rel="icon" href="/logo.png" type="image/x-icon" />
-        <meta name="viewport" content="width=1280, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Component {...pageProps} />
     </>
