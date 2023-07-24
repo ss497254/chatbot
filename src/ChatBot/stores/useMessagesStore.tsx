@@ -10,7 +10,8 @@ interface MessageStoreState {
 }
 
 const startMessage: IMessage = {
-  content: "👋 Hi! I am Chatbot, ask me anything about Chatbase!",
+  content:
+    "👋 Hi! I am Chatbot, a virtual assistant designed to provide information and answer questions about anything.",
   author: "Bot",
   timestamp: new Date().getTime(),
 };
