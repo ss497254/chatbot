@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "./Header";
 import { MessageInputBar } from "./MessageInputBar";
-import { MessagesContainer } from "./MessagesContainer";
+import { MessagesContainer } from "./Messages";
 import { MessageSuggestions } from "./MessageSuggestions";
 
 interface ChatScreenProps extends React.PropsWithChildren {}
