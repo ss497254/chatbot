@@ -1,0 +1,8 @@
+.text-area[contenteditable]:empty::before {
+  @apply text-zinc-700;
+  content: "Send a message";
+}
+.text-area[contenteditable]:empty:focus::before {
+  @apply text-zinc-700;
+  content: "Start typing...";
+}

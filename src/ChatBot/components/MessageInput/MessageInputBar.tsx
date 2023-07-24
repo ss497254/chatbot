@@ -25,9 +25,6 @@ export const MessageInputBar = () => {
   };
 
   useEffect(() => {
-    // focus textarea on mount
-    ref.current?.focus();
-
     const fn = (e: KeyboardEvent) => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
