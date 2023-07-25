@@ -1,8 +1,8 @@
 import React from "react";
-import { CloseIcon, SyncIcon } from "../icons";
-import { IconButton } from "./IconButton";
+import { CloseIcon, ResetIcon } from "../icons";
 import { useChatOpenStore } from "../stores/useChatOpenStore";
 import { useMessageStore } from "../stores/useMessagesStore";
+import { IconButton } from "./IconButton";
 
 interface HeaderProps extends React.PropsWithChildren {}
 
@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = () => {
       <img src="/logo.png" className="h-8 w-8 mx-2" />
       <h4 className="flex-grow">Chatbot</h4>
       <IconButton onClick={clearMessages}>
-        <SyncIcon size={18} />
+        <ResetIcon size={18} />
       </IconButton>
       <IconButton onClick={toggleOpen}>
         <CloseIcon />
