@@ -41,7 +41,7 @@ export const MessageInputBar = () => {
       <ExpandingTextArea ref={ref} />
       <IconButton
         onClick={onSubmit}
-        className="!p-2 ml-3 hover:rounded-full duration-200 h-fit bg-zinc-100 hover:bg-blue-500 hover:text-white"
+        className="!p-2 ml-3 hover:rounded-full duration-200 h-fit bg-zinc-100 hover:!bg-blue-500 hover:text-white"
       >
         {isSubmitting ? <Spinner /> : <SendIcon size={22} />}
       </IconButton>
