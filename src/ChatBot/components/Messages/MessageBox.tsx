@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import { IMessage } from "../../types/IMessage";
 import Style from "./style.module.css";
-import { TypeMessage } from "./TypeMessage";
 
 interface props extends IMessage {
   dir: "left" | "right";
@@ -14,7 +13,7 @@ const dirClassNames = {
 };
 
 export const MessageBox: React.FC<props> = memo(
-  ({ content, dir, timestamp, author }) => {
+  ({ content, dir, timestamp }) => {
     return (
       <div
         className={[
@@ -23,11 +22,7 @@ export const MessageBox: React.FC<props> = memo(
         ].join(" ")}
       >
         <p className="overflow-x-hidden text-sm hover:break-words text-ellipsis">
-          {author === "Bot" ? (
-            <TypeMessage words={content.split(" ")} />
-          ) : (
-            content
-          )}
+          {content}
         </p>
         <div className="mt-2 -mb-2 -mr-1 text-xs text-right">
           {new Date(timestamp).toTimeString().substring(0, 5)}

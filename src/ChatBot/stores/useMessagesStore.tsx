@@ -5,7 +5,8 @@ import { generateBotMessage } from "../utils/generateBotMessage";
 interface MessageStoreState {
   messages: IMessage[];
   isLoading: boolean;
-  addMessage: (x: Omit<IMessage, "timestamp">) => void;
+  addMessage: (x: Omit<IMessage, "timestamp">) => IMessage;
+  updateMessage: (x: IMessage) => IMessage;
   clearMessages: () => void;
 }
 
@@ -19,21 +20,35 @@ const startMessage: IMessage = {
 export const useMessageStore = create<MessageStoreState>()((set, get) => ({
   messages: [startMessage],
   isLoading: false,
-  addMessage: (t) => {
-    if (t.author === "User")
+  addMessage: (m) => {
+    if (m.author === "User")
       setTimeout(() => {
         set({ isLoading: false });
-        generateBotMessage(t.content);
+        generateBotMessage(m.content);
       }, 1500);
 
+    const newMessage = { ...m, timestamp: new Date().getTime() };
     set(({ messages }) => {
-      const newMessage = { ...t, timestamp: new Date().getTime() };
-
       return {
-        isLoading: t.author === "User",
+        isLoading: m.author === "User",
         messages: [...messages, newMessage],
       };
     });
+
+    return newMessage;
+  },
+  updateMessage: (t) => {
+    set(({ messages }) => {
+      return {
+        messages: messages.map((x) => {
+          if (x.timestamp !== t.timestamp) return x;
+
+          return t;
+        }),
+      };
+    });
+
+    return t;
   },
   clearMessages: () => {
     set({ messages: [startMessage] });
